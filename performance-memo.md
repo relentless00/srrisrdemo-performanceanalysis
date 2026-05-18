@@ -1,0 +1,7 @@
+## Performance Memo
+
+The project involved developing a simple Next.js application with two rendering methods: Server-Side Rendering (SSR) and Incremental Static Regeneration (ISR). The SSR page was connected to a MySQL database and retrieved product data dynamically during every request, while the ISR page displayed pre-rendered static content that regenerated periodically. The setup process included installing Next.js, configuring the App Router, connecting MySQL using the mysql2 package, and creating separate routes for SSR and ISR pages. The k6 load testing tool was then installed and configured to simulate 10 virtual users for 10 seconds.
+
+The load test results showed that both pages successfully handled requests without failures. The SSR page processed 83 requests with an average response time of approximately 270 milliseconds. In comparison, the ISR page processed 92 requests with an average response time of around 154 milliseconds. Both tests achieved a 0% request failure rate, indicating stable application performance under moderate load conditions.
+
+The observed performance difference showed that ISR was significantly faster than SSR. Since SSR fetches data from MySQL during every request, additional processing time is required. Meanwhile, ISR serves cached pre-generated pages, resulting in lower response times and improved overall performance.
